@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-_8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="appTitle">Veo 3 Prompt Generator</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.5.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="mainHeading">Veo 3 Consistent Character Prompt Generator</h1>
+            <button id="langSwitcher" aria-label="Switch Language">English</button>
+        </header>
+
+        <section id="presetsSection" class="presets-section" aria-labelledby="presetsHeader">
+            <h2 id="presetsHeader">Contoh Preset</h2>
+            <div id="presetContainer" class="preset-container">
+                <!-- Presets will be loaded here by JS -->
+            </div>
+            <button type="button" id="clearFormBtn" class="button secondary clear-form-button hidden">Clear Form</button>
+        </section>
+
+        <main class="main-content">
+            <form id="promptForm" class="prompt-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="sceneTitle" id="labelSceneTitle">Judul Scene</label>
+                        <textarea id="sceneTitle" rows="2" placeholder="contoh: Terminal bus malam"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="coreCharacterDescription" id="labelCoreCharacterDescription">Deskripsi Karakter Inti</label>
+                        <textarea id="coreCharacterDescription" rows="6" placeholder="contoh: Seorang vlogger pria muda asal Maluku berusia 27 tahun. Perawakan/Bentuk Tubuh: tubuh kekar, tinggi 164cm, bentuk badan proporsional..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="characterVoiceDetails" id="labelCharacterVoiceDetails">Detail Suara Karakter</label>
+                        <textarea id="characterVoiceDetails" rows="5" placeholder="contoh: Dia berbicara dengan suara pria muda yang hangat dan penuh semangat. Nada: Young Male..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="characterAction" id="labelCharacterAction">Aksi Karakter</label>
+                        <textarea id="characterAction" rows="3" placeholder="contoh: berjalan di sekitar terminal bus malam sambil melihat-lihat aktivitas penumpang dan pedagang."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="characterExpression" id="labelCharacterExpression">Ekspresi Karakter</label>
+                        <textarea id="characterExpression" rows="3" placeholder="contoh: Karakter menunjukkan ekspresi kagum dan antusias, sering tersenyum sambil melirik kamera."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="settingTime" id="labelSettingTime">Latar Tempat & Waktu</label>
+                        <textarea id="settingTime" rows="4" placeholder="contoh: latar tempat: di terminal bus antar kota malam hari... Waktu: malam hari, hujan rintik-rintik."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cameraMovementSelect" id="labelCameraMovement">Gerakan Kamera</label>
+                        <select id="cameraMovementSelect">
+                            <option value="">Pilih Gerakan Kamera...</option>
+                            <!-- Options will be populated by JS -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group"> 
+                        <label for="additionalVisualDetails" id="labelAdditionalVisualDetails">Detail Visual Tambahan</label>
+                        <textarea id="additionalVisualDetails" rows="3" placeholder="contoh: Pencahayaan: natural... Gaya Video/Art Style: cinematic realistis..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="visualQualitySelect" id="labelVisualQuality">Kualitas Visual</label>
+                        <select id="visualQualitySelect">
+                            <option value="">Pilih Kualitas Visual...</option>
+                            <!-- Options will be populated by JS -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="overallAtmosphere" id="labelOverallAtmosphere">Suasana Keseluruhan</label>
+                        <textarea id="overallAtmosphere" rows="3" placeholder="contoh: Suasana sibuk, ramai, dengan kesan perjalanan malam yang hidup dan dinamis meskipun hujan."></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="environmentalSound" id="labelEnvironmentalSound">Suara Lingkungan/Ambience</label>
+                        <textarea id="environmentalSound" rows="3" placeholder="contoh: suara mesin bus menyala, pengumuman dari pengeras suara, derai hujan ringan..."></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="characterDialog" id="labelCharacterDialog">Dialog Karakter</label>
+                        <textarea id="characterDialog" rows="4" placeholder="contoh: Karakter berkata: Tiap kota punya terminal kayak gini..."></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="negativePrompt" id="labelNegativePrompt">Negative Prompt</label>
+                        <textarea id="negativePrompt" rows="3" placeholder="contoh: Hindari: teks di layar, subtitle, tulisan di video, font, logo, distorsi..."></textarea>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button type="button" id="generateBtn" class="button primary">Generate Prompt</button>
+                </div>
+            </form>
+
+            <section id="outputSection" class="output-section" aria-labelledby="outputHeader">
+                <h2 id="outputHeader">Hasil Prompt</h2>
+                <textarea id="generatedPromptOutput" rows="15" readonly placeholder="Hasil prompt akan muncul di sini..."></textarea>
+                <button type="button" id="copyBtn" class="button secondary">Copy Prompt</button>
+            </section>
+
+            <section id="resultIDSection" class="output-section" aria-labelledby="resultIDHeader">
+                <h3 id="resultIDHeader">Hasil Prompt (Indonesia)</h3>
+                <textarea id="resultID" class="editable-prompt" rows="15" placeholder="Prompt Bahasa Indonesia akan muncul di sini..."></textarea>
+                <button type="button" id="copyResultIDBtn" class="button secondary copy-output-btn">Copy Indonesian</button>
+            </section>
+
+            <section id="resultENSection" class="output-section" aria-labelledby="resultENHeader">
+                <h3 id="resultENHeader">Final Prompt (English)</h3>
+                <div id="resultEN" class="output-display" data-placeholder="Final English prompt will appear here..."></div>
+                <button type="button" id="copyResultENBtn" class="button secondary copy-output-btn">Copy English</button>
+            </section>
+
+        </main>
+
+        <footer>
+            <p id="footerText">Veo 3 Prompt Generator by DemangFedia</p>
+        </footer>
+    </div>
+    <script type="module" src="index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

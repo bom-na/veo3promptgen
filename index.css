@@ -1,0 +1,289 @@
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #E6F3FF 0%, #FFFFFF 100%);
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 1.8em;
+    color: #2c3e50;
+    margin: 0;
+}
+
+#langSwitcher {
+    padding: 8px 15px;
+    background-color: #0A4D7A; /* Dark Blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+#langSwitcher:hover {
+    background-color: #0E6BAA; /* Lighter Dark Blue */
+}
+
+.presets-section {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.presets-section h2 {
+    font-size: 1.4em;
+    color: #34495e;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.preset-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.preset-button {
+    background-color: #0A4D7A; /* Dark Blue */
+    color: white;
+    border: none; 
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-size: 0.9em;
+}
+
+.preset-button:hover {
+    background-color: #0E6BAA; /* Lighter Dark Blue */
+    transform: translateY(-2px);
+}
+
+.clear-form-button {
+    margin-top: 15px; 
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.prompt-form, .output-section {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.prompt-form h2, .output-section h2, .output-section h3 {
+    font-size: 1.4em;
+    color: #34495e;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.output-section h2 { 
+    text-align: left;
+}
+
+.output-section h3 { 
+    font-size: 1.2em;
+    text-align: center;
+}
+
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+    font-size: 0.95em;
+}
+
+.form-group textarea, .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group textarea, .editable-prompt { 
+    resize: vertical;
+    min-height: 50px;
+}
+
+.form-group select {
+    min-height: 50px; /* Ensures select is same height as a single-line textarea */
+    appearance: none; /* Removes default system appearance */
+    background-color: #fff; /* Ensures background is white */
+    /* Add custom arrow or use a background image for select arrow if desired */
+    /* background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); */
+    /* background-repeat: no-repeat; */
+    /* background-position: right 12px center; */
+    /* background-size: 12px; */
+    padding-right: 30px; /* Make space for custom arrow if added */
+}
+
+
+.form-group textarea:focus, .editable-prompt:focus, .form-group select:focus {
+    outline: none;
+    border-color: #0A4D7A; /* Dark Blue for focus */
+    box-shadow: 0 0 0 0.2rem rgba(10, 77, 122, 0.25); /* Adjusted shadow color */
+}
+
+.actions {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.button {
+    padding: 12px 25px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    font-weight: 500;
+    color: white; /* Default text color for buttons */
+}
+
+.button.primary {
+    background-color: #0A4D7A; /* Dark Blue */
+}
+
+.button.primary:hover {
+    background-color: #0E6BAA; /* Lighter Dark Blue */
+}
+
+.button.secondary {
+    background-color: #0A4D7A; /* Dark Blue */
+    margin-top: 15px; 
+}
+
+.button.secondary:hover {
+    background-color: #0E6BAA; /* Lighter Dark Blue */
+}
+
+.button:active {
+    transform: translateY(1px);
+}
+
+
+#generatedPromptOutput, .editable-prompt {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-family: 'Menlo', 'Consolas', monospace;
+    font-size: 0.9em;
+    background-color: #f8f9fa;
+    color: #495057;
+    box-sizing: border-box;
+    min-height: 200px;
+}
+
+#generatedPromptOutput[readonly] {
+    background-color: #e9ecef;
+}
+
+.output-display {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-family: 'Menlo', 'Consolas', monospace;
+    font-size: 0.9em;
+    background-color: #eeeeee;
+    color: #333;
+    box-sizing: border-box;
+    min-height: 200px;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+
+.output-display:empty::before {
+    content: attr(data-placeholder); /* Ensure this matches HTML data-attribute */
+    color: #6c757d;
+}
+
+.copy-output-btn { 
+    /* Uses .button.secondary styling */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #7f8c8d;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+
+    .button {
+        padding: 10px 20px;
+        font-size: 0.95em;
+    }
+}
