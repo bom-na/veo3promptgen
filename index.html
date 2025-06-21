@@ -106,7 +106,7 @@
                         <label for="negativePrompt" id="labelNegativePrompt">Negative Prompt</label>
                         <textarea id="negativePrompt" rows="4" placeholder="contoh: Hindari: teks di layar, subtitle, tulisan di video, font, logo, distorsi..."></textarea>
                     </div>
-                </div> {/* Closing form-grid */}
+                </div>
 
                 <div class="actions">
                     <button type="button" id="generateBtn" class="button primary">Generate Prompt</button>
@@ -120,20 +120,18 @@
                     <button type="button" id="copyBtn" class="button secondary copy-output-btn">Copy Prompt</button>
                 </div>
 
-                <div class="output-columns">
-                    <div class="output-column">
-                        <h3 id="resultIDHeader">Hasil Prompt (Indonesia)</h3>
-                        <textarea id="resultID" class="editable-prompt" rows="15" placeholder="Prompt Bahasa Indonesia akan muncul di sini..."></textarea>
-                         <div class="actions">
-                            <button type="button" id="copyResultIDBtn" class="button secondary copy-output-btn">Salin Indonesia</button>
-                        </div>
+                <div class="output-column">
+                    <h3 id="resultIDHeader">Hasil Prompt (Indonesia)</h3>
+                    <textarea id="resultID" class="editable-prompt" rows="15" placeholder="Prompt Bahasa Indonesia akan muncul di sini..."></textarea>
+                     <div class="actions">
+                        <button type="button" id="copyResultIDBtn" class="button secondary copy-output-btn">Salin Indonesia</button>
                     </div>
-                    <div class="output-column">
-                        <h3 id="resultENHeader">Final Prompt (English)</h3>
-                        <div id="resultEN" class="output-display" data-placeholder="Final English prompt will appear here..."></div>
-                        <div class="actions">
-                            <button type="button" id="copyResultENBtn" class="button secondary copy-output-btn">Salin Inggris</button>
-                        </div>
+                </div>
+                <div class="output-column">
+                    <h3 id="resultENHeader">Final Prompt (English)</h3>
+                    <div id="resultEN" class="output-display" data-placeholder="Final English prompt will appear here..."></div>
+                    <div class="actions">
+                        <button type="button" id="copyResultENBtn" class="button secondary copy-output-btn">Salin Inggris</button>
                     </div>
                 </div>
             </section>

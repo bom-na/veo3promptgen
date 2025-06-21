@@ -1,3 +1,4 @@
+
 body {
     font-family: 'Space Grotesk', sans-serif;
     margin: 0;
@@ -106,19 +107,20 @@ header h1 {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-.prompt-form h2, .output-section h2, .output-section h3 {
+.prompt-form h2, .output-section h2 {
     font-size: 1.4em;
     color: #34495e;
     margin-top: 0;
     margin-bottom: 20px;
-}
-.output-section h2 { 
-    text-align: left;
+    text-align: left; /* Ensures h2 is also left aligned */
 }
 
 .output-section h3 { 
     font-size: 1.2em;
-    text-align: center;
+    color: #34495e;
+    margin-top: 25px; /* Added margin for spacing when stacked */
+    margin-bottom: 15px; /* Consistent bottom margin */
+    text-align: left; /* Changed from center to left */
 }
 
 
@@ -164,11 +166,6 @@ header h1 {
     min-height: 50px; /* Ensures select is same height as a single-line textarea */
     appearance: none; /* Removes default system appearance */
     background-color: #fff; /* Ensures background is white */
-    /* Add custom arrow or use a background image for select arrow if desired */
-    /* background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); */
-    /* background-repeat: no-repeat; */
-    /* background-position: right 12px center; */
-    /* background-size: 12px; */
     padding-right: 30px; /* Make space for custom arrow if added */
 }
 
@@ -183,6 +180,12 @@ header h1 {
     margin-top: 25px;
     text-align: center;
 }
+
+.output-column .actions { /* Ensure actions within output columns also have consistent spacing */
+    margin-top: 15px;
+    text-align: center;
+}
+
 
 .button {
     padding: 12px 25px;
@@ -257,6 +260,11 @@ header h1 {
 .copy-output-btn { 
     /* Uses .button.secondary styling */
 }
+
+.output-column { /* Add margin if needed, though h3 margin-top should handle it */
+    /* margin-bottom: 20px; */ /* Optional: if more space is needed below each entire block */
+}
+
 
 footer {
     text-align: center;
