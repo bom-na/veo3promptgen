@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-_8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="appTitle">Veo 3 Prompt Generator</title>
     <link rel="stylesheet" href="index.css">
@@ -74,9 +74,9 @@
                         </select>
                     </div>
                     
-                    <div class="form-group"> 
-                        <label for="additionalVisualDetails" id="labelAdditionalVisualDetails">Detail Visual Tambahan</label>
-                        <textarea id="additionalVisualDetails" rows="3" placeholder="contoh: Pencahayaan: natural... Gaya Video/Art Style: cinematic realistis..."></textarea>
+                    <div class="form-group">
+                        <label for="additionalVisualDetails" id="labelAdditionalVisualDetails">Detail Visual Lainnya (Pencahayaan, Gaya)</label>
+                        <textarea id="additionalVisualDetails" rows="3" placeholder="contoh: Pencahayaan: natural dari lampu jalan dan lampu bus, pantulan cahaya pada aspal basah. Gaya Video/Art Style: cinematic realistis."></textarea>
                     </div>
 
                     <div class="form-group">
@@ -92,52 +92,58 @@
                         <textarea id="overallAtmosphere" rows="3" placeholder="contoh: Suasana sibuk, ramai, dengan kesan perjalanan malam yang hidup dan dinamis meskipun hujan."></textarea>
                     </div>
 
-                    <div class="form-group full-width">
+                    <div class="form-group">
                         <label for="environmentalSound" id="labelEnvironmentalSound">Suara Lingkungan/Ambience</label>
                         <textarea id="environmentalSound" rows="3" placeholder="contoh: suara mesin bus menyala, pengumuman dari pengeras suara, derai hujan ringan..."></textarea>
                     </div>
 
-                    <div class="form-group full-width">
+                     <div class="form-group">
                         <label for="characterDialog" id="labelCharacterDialog">Dialog Karakter</label>
                         <textarea id="characterDialog" rows="4" placeholder="contoh: Karakter berkata: Tiap kota punya terminal kayak gini..."></textarea>
                     </div>
-
+                    
                     <div class="form-group full-width">
                         <label for="negativePrompt" id="labelNegativePrompt">Negative Prompt</label>
-                        <textarea id="negativePrompt" rows="3" placeholder="contoh: Hindari: teks di layar, subtitle, tulisan di video, font, logo, distorsi..."></textarea>
+                        <textarea id="negativePrompt" rows="4" placeholder="contoh: Hindari: teks di layar, subtitle, tulisan di video, font, logo, distorsi..."></textarea>
                     </div>
-                </div>
+                </div> {/* Closing form-grid */}
 
                 <div class="actions">
                     <button type="button" id="generateBtn" class="button primary">Generate Prompt</button>
                 </div>
             </form>
 
-            <section id="outputSection" class="output-section" aria-labelledby="outputHeader">
+            <section class="output-section">
                 <h2 id="outputHeader">Hasil Prompt</h2>
-                <textarea id="generatedPromptOutput" rows="15" readonly placeholder="Hasil prompt akan muncul di sini..."></textarea>
-                <button type="button" id="copyBtn" class="button secondary">Copy Prompt</button>
-            </section>
+                <textarea id="generatedPromptOutput" rows="15" placeholder="Hasil prompt akan muncul di sini..." readonly></textarea>
+                <div class="actions">
+                    <button type="button" id="copyBtn" class="button secondary copy-output-btn">Copy Prompt</button>
+                </div>
 
-            <section id="resultIDSection" class="output-section" aria-labelledby="resultIDHeader">
-                <h3 id="resultIDHeader">Hasil Prompt (Indonesia)</h3>
-                <textarea id="resultID" class="editable-prompt" rows="15" placeholder="Prompt Bahasa Indonesia akan muncul di sini..."></textarea>
-                <button type="button" id="copyResultIDBtn" class="button secondary copy-output-btn">Copy Indonesian</button>
+                <div class="output-columns">
+                    <div class="output-column">
+                        <h3 id="resultIDHeader">Hasil Prompt (Indonesia)</h3>
+                        <textarea id="resultID" class="editable-prompt" rows="15" placeholder="Prompt Bahasa Indonesia akan muncul di sini..."></textarea>
+                         <div class="actions">
+                            <button type="button" id="copyResultIDBtn" class="button secondary copy-output-btn">Salin Indonesia</button>
+                        </div>
+                    </div>
+                    <div class="output-column">
+                        <h3 id="resultENHeader">Final Prompt (English)</h3>
+                        <div id="resultEN" class="output-display" data-placeholder="Final English prompt will appear here..."></div>
+                        <div class="actions">
+                            <button type="button" id="copyResultENBtn" class="button secondary copy-output-btn">Salin Inggris</button>
+                        </div>
+                    </div>
+                </div>
             </section>
-
-            <section id="resultENSection" class="output-section" aria-labelledby="resultENHeader">
-                <h3 id="resultENHeader">Final Prompt (English)</h3>
-                <div id="resultEN" class="output-display" data-placeholder="Final English prompt will appear here..."></div>
-                <button type="button" id="copyResultENBtn" class="button secondary copy-output-btn">Copy English</button>
-            </section>
-
         </main>
-
-        <footer>
-            <p id="footerText">Veo 3 Prompt Generator by DemangFedia</p>
-        </footer>
     </div>
-    <script type="module" src="index.tsx"></script>
+
+    <footer>
+        <p id="footerText">Veo 3 Prompt Generator by DemangFedia</p>
+    </footer>
+    <script type="module" src="index.js"></script>
 <script type="module" src="/index.tsx"></script>
 </body>
 </html>
