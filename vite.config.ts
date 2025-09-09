@@ -15,3 +15,7 @@ export default defineConfig(({ mode }) => {
       }
     };
 });
+import { defineConfig } from 'vite'
+export default defineConfig({
+  base: '/veo3promptgen/', // nếu tên repo khác, sửa đúng tên
+})
