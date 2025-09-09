@@ -21,3 +21,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   base: '/veo3promptgen/', // Nếu repo tên khác, thay đúng tên vào đây
 })
+import { defineConfig } from 'vite'
+export default defineConfig({
+  base: '/veo3promptgen/', // nếu repo tên khác, thay đúng tên vào đây
+})
